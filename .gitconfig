@@ -1,0 +1,35 @@
+[core]
+	editor = nano
+	ignorecase = false
+
+[alias]
+  a = add
+  aa = add .
+  ap = add -p
+  ag = "!add_grep() { for param in "$@"; do git add $(git ls-files -o -m --exclude-standard | grep "$param"); done }; add_grep"
+  amend = commit --amend
+  b = branch
+  bv = branch -vv
+  ch = checkout
+  cht = checkout --track -b
+  chg = "!checkout_grep() { for param in "$@"; do git checkout $(git ls-files -o -m --exclude-standard | grep "$param"); done }; checkout_grep"
+  co = commit
+  com = commit -m
+  cp = cherry-pick
+  d = diff
+  dc = diff --cached
+  dg = "!diff_grep() { for param in "$@"; do git diff $(git ls-files -o -m --exclude-standard | grep "$param"); done }; diff_grep"
+  dn = diff --name-only
+  fa = fetch --all
+  file = "!file() { git show "$1" + "$2"; }; files"
+  files = "!files() { git diff-tree --no-commit-id --name-only -r "$1"; }; files"
+  l = log --oneline  --abbrev-commit -20 --date=format:'%a %d-%m %H:%M' --pretty=format:'%C(yellow)%h%Creset%C(red)%d%Creset %s'
+  ll = log --oneline  --abbrev-commit -20 --date=format:'%a %d-%m %H:%M' --pretty=format:'%C(yellow)%h%Creset%C(red)%d%Creset %s %C(yellow)%an %C(red)%ad %Creset'
+  lll = log --oneline  --abbrev-commit --date=format:'%a %d-%m %H:%M' --pretty=format:'%C(yellow)%h%Creset%C(red)%d%Creset %s %C(yellow)%an %C(red)%ad %Creset'
+  res = reset
+  resg = "!reset_grep() { for param in "$@"; do git reset $(git ls-files -c | grep "$param"); done }; reset_grep"
+  reb = rebase -i
+  s = status
+  sh = show
+  shst = stash show -p
+  merge = mergetool -t opendiff
